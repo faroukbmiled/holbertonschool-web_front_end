@@ -147,6 +147,11 @@ summary {
 
 /*# sourceMappingURL=normalize.min.css.map */
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -170,12 +175,12 @@ a:visited {
   font-style: italic;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 a:active {
   background-color: var(--color-light-grey);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .visually-hidden {
@@ -215,6 +220,55 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
+.container {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header {
+  text-align: var(--section-header-align);
+  padding: var(--section-header-padding);
+}
+
+.section-footer {
+  padding: var(--section-footer-padding);
+  text-align: var(--section-footer-align);
+}
+
+.section-body {
+  padding: var(--section-body-padding);
+}
+
+.navbar-menu {
+  float: right;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.nav .nav-item {
+  font-family: var(--nav-item-font-family);
+  font-weight: var(--nav-item-font-weight);
+  font-size: var(--nav-item-font-size);
+  letter-spacing: var(--nav-item-letter-spacing);
+  display: var(--nav-item-display);
+  margin: var(--nav-item-margin);
+}
+
+.nav .nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.nav .nav-link:hover {
+  color: var(--nav-item-link-hover);
+}
+
 :root {
   --color-primary: #d73953;
   --color-black: #090909;
@@ -238,4 +292,21 @@ h6 {
   --section-tagline-transform: uppercase;
   --section-title-margin: 0;
   --section-title-color: var(--color-black);
+  --section-padding: 5rem 0;
+  --section-header-padding: 0 0 3rem;
+  --section-body-padding: 0 0 3rem;
+  --section-footer-padding: 3rem 0 0;
+  --section-footer-align: center;
+  --footer-padding: 5rem 0 1rem;
+  --nav-item-font-family: var(--font-family-title);
+  --nav-item-font-weight: var(--font-weight-bold);
+  --nav-item-font-size: var(--font-size-medium);
+  --nav-item-letter-spacing: 0.04rem;
+  --nav-item-display: inline-block;
+  --nav-item-margin: 0 0 3rem 0;
+  --nav-item-link-hover: var(--color-primary);
+}
+
+.footer {
+  padding: var(--footer-padding);
 }

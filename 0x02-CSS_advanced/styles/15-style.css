@@ -147,6 +147,11 @@ summary {
 
 /*# sourceMappingURL=normalize.min.css.map */
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -170,12 +175,12 @@ a:visited {
   font-style: italic;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 a:active {
   background-color: var(--color-light-grey);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .visually-hidden {
