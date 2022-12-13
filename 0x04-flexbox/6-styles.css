@@ -236,10 +236,6 @@
     margin: var(--nav-item-margin);
   }
 
-  .nav .nav-item + .nav-item {
-    margin: 0 0 0 2rem;
-  }
-
   .nav .nav-link {
     display: block;
     padding: 0.5rem 0;
@@ -249,6 +245,10 @@
   .nav .nav-link:hover {
     color: var(--nav-item-link-hover);
     text-decoration: none;
+  }
+
+  .nav .nav-item + .nav-item {
+    margin: var(--nav-item-margin);
   }
 
   .nav .nav-link::before {
