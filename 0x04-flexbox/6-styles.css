@@ -201,7 +201,6 @@
     /* Remove the float: left declaration */
     /* float: left; */
     margin: 1rem;
-    margin-bottom: 20px;
   }
 
   .col-1-3 {
