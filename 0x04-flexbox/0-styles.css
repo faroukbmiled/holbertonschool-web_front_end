@@ -184,6 +184,12 @@
     display: flex;
   }
 
+  ul.row {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
   /* Remove the row::after declaration */
   /* row::after {
     content: "";
@@ -195,23 +201,6 @@
     /* Remove the float: left declaration */
     /* float: left; */
     margin-bottom: 20px;
-  }
-
-  ul.row {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .row::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-
-  [class*='col-'] {
-    float: left;
-    padding: 0.5rem;
   }
 
   .col-1-3 {
