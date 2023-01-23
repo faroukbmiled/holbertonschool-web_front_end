@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* add any css styles here */
+    </style>
+  </head>
+  <body>
+    <script>
+      function addPostRow(data) {
+        const { id, title, author } = data;
+        const text = `Post created with id ${id}, title: ${title}, author: ${author}`;
+        $("body").append(`<p><span>${text}</span></p>`);
+      }
+
+      function listPosts() {
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:3000/posts",
+          success: function (response) {
+            for (let post of response) {
+              addPostRow(post);
+            }
+          },
+          error: function () {
+            alert("Server Error");
+          },
+        });
+      }
+
+      function buildForm() {
+        $("body").append(`
+        <form>
+          <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" onclick="this.select()">
+          </div>
+          <div>
+            <label for="title">Title:</label>
+            <textarea id="title"></textarea>
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      `);
+        $("#author").on("keydown", function (e) {
+          if (e.keyCode == 13) {
+            $("form").submit();
+          }
+        });
+        $("form").submit(sendForm);
+      }
+
+      function sendForm(event) {
+        event.preventDefault();
+        const data = {
+          title: $("#title").val(),
+          author: $("#author").val(),
+        };
+        $("form").after("About to send the query to the API");
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3000/posts",
+          data,
+          success: function (response) {
+            addPostRow(response);
+          },
+          error: function () {
+            alert("Error sending the POST query");
+          },
+        });
+      }
+
+      listPosts();
+      buildForm();
+    </script>
+  </body>
+</html>

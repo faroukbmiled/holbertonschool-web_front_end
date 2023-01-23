@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function addPostRow(data) {
+        const { id, title, author } = data;
+        const text = `Post created with id ${id}, title: ${title}, author: ${author}`;
+        $("body").append(`<p><span>${text}</span></p>`);
+      }
+
+      function listPosts() {
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:3000/posts",
+          success: function (response) {
+            for (let post of response) {
+              addPostRow(post);
+            }
+          },
+          error: function () {
+            alert("Server Error");
+          },
+        });
+      }
+
+      listPosts();
+    </script>
+  </body>
+</html>
