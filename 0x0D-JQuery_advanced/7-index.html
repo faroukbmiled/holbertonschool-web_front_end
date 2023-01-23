@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 7</title>
+  </head>
+
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="application/javascript">
+      $(document).ready(function () {
+        var input = $("<input>").attr({ type: "text" });
+        var button = $("<button>").text("Submit").attr({ id: "submit" });
+        var form = $("<form>").append(input, button);
+        $("body").append(form);
+
+        $("#submit").click(function (c) {
+          c.preventDefault();
+          var search = input.val();
+          queryWikipedia(search);
+        });
+
+        var ul = $("<ul>").appendTo("body");
+
+        function addNewArticle(id, title, snippet) {
+          var li = $(`<li>
+            <p>${id} - <b>${title}</b></p>
+            <p>${snippet}</p>
+          </li>`);
+          ul.append(li);
+        }
+
+        function queryWikipedia(search) {
+          var url = "https://en.wikipedia.org/w/api.php";
+          var params = {
+            action: "query",
+            list: "search",
+            srsearch: search,
+            format: "json",
+            origin: "*",
+          };
+
+          $.get(url, params, function (data) {
+            var articles = data.query.search;
+            for (var i = 0; i < articles.length; i++) {
+              addNewArticle(
+                articles[i].pageid,
+                articles[i].title,
+                articles[i].snippet
+              );
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
