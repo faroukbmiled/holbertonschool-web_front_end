@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <div id="store"></div>
+    <script>
+      var availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+      if (!sessionStorage) {
+        alert(
+          "Sorry, your browser does not support Web storage. Try again with a better one."
+        );
+      } else {
+        createStore();
+        displayCart();
+      }
+
+      function addItemToCart(item) {
+        sessionStorage.setItem(item, true);
+      }
+
+      function createStore() {
+        var ul = document.createElement("ul");
+        document.getElementById("store").appendChild(ul);
+
+        availableItems.forEach(function (item) {
+          var li = document.createElement("li");
+          li.innerText = item;
+          li.onclick = function () {
+            addItemToCart(item);
+          };
+          ul.appendChild(li);
+        });
+      }
+
+      function displayCart() {
+        if (sessionStorage.length === 0) {
+          return;
+        }
+
+        var p = document.createElement("p");
+        p.innerText =
+          "You previously had " + sessionStorage.length + " items in your cart";
+        document.body.appendChild(p);
+      }
+    </script>
+  </body>
+</html>
